@@ -1,0 +1,587 @@
+Типи даних: Умови задач
+
+Завдання 1. Найбільш віддалена точка
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Виведіть координати віддаленої від початку координат точки.
+Вхідні дані
+Програма отримує на вхід набір точок на площині. Спочатку задано кількість точок n, потім
+йде послідовність з рядків n, кожна з яких містить два числа: координати точки. 
+Вихідні дані
+Виведіть координати точки, найвіддаленішої від початку координат.
+int a; int b; int c; int d; 
+		  int n=2;
+		  a=1;
+		  b=2;
+		  c=2;
+		  d=3;
+		  int x=a+b;
+		  int y=c+d;
+		  if(x>y) {
+			  System.out.println(a + " " + b);
+		  }else if(y>x) {
+			  System.out.println(c + " " + d);
+			  
+		  }else {
+				System.out.println(a + " " + b + " " + c + " " + d);
+		  }
+
+Завдання 2. Центр ваги
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Виведіть координати центру ваги даної множини точок.
+Створіть структуру Point та збережіть вихідні дані у масиві структур Point.
+Вхідні дані
+Програма отримує на вхід набір точок на площині. Спочатку задано кількість точок n,
+потім йде послідовність з рядків n, кожна з яких містить два числа: координати точки.
+Вихідні дані
+Виведіть координати центру ваги даної множини точок. Відповідь необхідно виводити з
+точністю в 15 цифр.
+import java.util.Scanner;
+public class Coordinates {
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	Point p = new Point();
+	double[] summ;
+	System.out.println("кількість рядків: " );
+    p.n=s.nextInt();
+    System.out.println("кількість стовпців: " );
+    p.m = s.nextInt();
+	int[][] a = new int[p.n][p.m];
+	summ = new double[p.n];
+	for (int i=0;i<p.n;i++) {
+    	for (int j = 0; j <p.m; j++) { 
+    		a[i][j]=s.nextInt();
+    	} }
+    	
+    for (int i=0;i<p.n;i++) {
+    	double sum = 0;
+    	for (int j = 0; j <p.m; j++) { 
+        sum += a[i][j];
+        summ[i] = sum;         
+    	}       
+    	System.out.println("Координати центру ваги " + i + "-го рядка: " + sum/2);       
+    }  
+	} }
+class Point {
+int n;
+int m;
+}
+
+Завдання 3. Діаметр множини
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Виведіть діаметр цієї множини – максимальна відстань між будь-якими двома точками.
+Створіть структуру Point та збережіть вихідні дані у масиві структур Point.
+Вхідні дані
+Програма отримує на вхід набір точок на площині. Спочатку задано кількість точок n,
+потім йде послідовність з рядків n, кожна з яких містить два числа: координати точки.
+Вихідні дані
+Необхідно вивести діаметр цієї множини з точністю в 15 значущих цифр.
+import java.util.Scanner;
+public class Coordinates {
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	Point p = new Point();
+	System.out.println("кількість рядків: " );
+    int n=s.nextInt();
+    System.out.println("Введіть набір точок: " );
+		p.x1=s.nextInt(); p.x2=s.nextInt();
+		p.y1=s.nextInt(); p.y2=s.nextInt();
+    	double diameter;
+    	diameter=(((p.x1-p.x2)*(p.x1-p.x2))+((p.y1-p.y2)* (p.y1-p.y2)));
+    	     
+    	System.out.println("Діаметр множини: " + Math.sqrt(diameter));       
+    }  
+	}	
+class Point {
+int x1; int x2;
+int y1; int y2;
+}
+
+//2 variant
+import java.util.Scanner;
+public class Coordinates {
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	Point p = new Point();
+    	System.out.println("кількість рядків: " );
+        p.n=s.nextInt();
+        System.out.println("кількість стовпців: " );
+        p.m = s.nextInt();
+    	int[][] a = new int[p.n][p.m];
+    	for (int i=0;i<p.n;i++) {
+        	for (int j = 0; j <p.m; j++) { 
+        		a[i][j]=s.nextInt();
+        	} }
+        	
+        for (int i=0;i<p.n;i++) {
+        	for (int j = 0; j <p.m; j++) { 
+        		double diameter;
+            diameter= (((a[0][0]-a[0][1])*(a[0][0]-a[0][1]))+((a[1][0]-a[1][1])*(a[1][0]-a[1][1])));
+            System.out.println("Діаметр множини " + Math.sqrt(diameter)); 
+            break;
+        	}       
+        	    
+        }  
+    	} }
+    class Point {
+    int n;
+    int m;
+    }
+
+Завдання 4. Сортування точок
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Виведіть усі вихідні точки у порядку зростання їх відстані від початку координат.
+Створіть структуру Point та збережіть вихідні дані у масиві структур Point.
+Вхідні дані
+Програма отримує на вхід набір точок на площині. Спочатку задано кількість точок n,
+потім йде послідовність з рядків n, кожна з яких містить два числа: координати точки.
+Вихідні дані
+Необхідно вивести всі вихідні точки у порядку зростання їх відстані від початку
+координат. Програма виводить лише координати точок, їх кількість виводити не треба.
+import java.util.Scanner;
+public class Coordinates {
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	Point p = new Point();
+    	System.out.println("кількість рядків: " );
+        p.n=s.nextInt();
+        System.out.println("кількість стовпців: " );
+        p.m = s.nextInt();
+    	int[][] a = new int[p.n][p.m];
+    	for (int i=0;i<p.n;i++) {
+        	for (int j = 0; j <p.m; j++) { 
+        		a[i][j]=s.nextInt();
+        	} }
+        	
+        for (int i=0;i<p.n;i++) {
+        	for (int j = 0; j <p.m; j++) { 
+        		if(a[0][1]<a[1][1]) {
+        			System.out.print(a[i][j] + " ");
+        			
+        		}
+        		
+        		else if(a[0][1]>a[1][1]) {
+        			System.out.println(a[1][0] + " " + a[1][1]);
+        			System.out.println(a[0][0] + " " + a[0][1]);
+        			break;
+        			
+        	}           		 
+        }System.out.println();  
+    	} }}
+    class Point {
+    int n;
+    int m;
+    }
+
+Завдання 5. Максимальний периметр
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Серед вихідних точок знайдіть три трикутники з максимальним периметром. Виведіть цей
+периметр.
+Вхідні дані
+Програма отримує на вхід набір точок на площині. Спочатку задано кількість точок n
+(2<n<101), потім йде послідовність з рядків n, кожна з яких містить два числа: координати точки. 
+Вихідні дані
+Необхідно вивести знайдений периметр з точністю в 15 цифр.
+Scanner in = new Scanner(System.in);
+        	    double x1 = in.nextDouble(), y1 = in.nextDouble();
+        	    double x2 = in.nextDouble(), y2 = in.nextDouble();
+        	    double x3 = in.nextDouble(), y3 = in.nextDouble();
+        	    double a = Math.sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+        	    double b = Math.sqrt((x3 - x1)*(x3 - x1) + (y3 - y1)*(y3 - y1));
+        	    double c = Math.sqrt((x3 - x2)*(x3 - x2) + (y3 - y2)*(y3 - y2));
+        	    double p = a + b + c;
+        	    System.out.println(p);   
+
+Завдання 6. Максимальна площа
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Серед вихідних точок знайдіть три, що утворюють трикутник максимальної площі.
+Виведіть цю площу.
+Створіть структуру Point та збережіть вихідні дані у масиві структур Point.
+Вхідні дані
+Програма отримує на вхід набір точок на площині. Спочатку задано кількість точок n
+(2<n<101), потім йде послідовність з рядків n, кожна з яких містить два числа: координати точки. 
+Вихідні дані
+Необхідно вивести знайдену площу з точністю в 15 цифр.
+Scanner in = new Scanner(System.in);
+        	    double x1 = in.nextDouble(), y1 = in.nextDouble();
+        	    double x2 = in.nextDouble(), y2 = in.nextDouble();
+        	    double x3 = in.nextDouble(), y3 = in.nextDouble();
+        	    double a = Math.sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+        	    double b = Math.sqrt((x3 - x1)*(x3 - x1) + (y3 - y1)*(y3 - y1));
+        	    double c = Math.sqrt((x3 - x2)*(x3 - x2) + (y3 - y2)*(y3 - y2));
+        	    double p = a + b + c, pp = p / 2;
+        	    double s = Math.sqrt(pp * (pp - a) * (pp - b) * (pp - c));
+        	    System.out.println(s);  
+
+Завдання 7. Середній бал з предметів
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Визначте середній бал усіх учнів із кожного предмета.
+Вхідні дані
+Задано спочатку кількість учнів n, потім n рядків, кожна з яких містить прізвище, ім'я та
+три числа (оцінки з трьох предметів: математики, фізики, інформатики). Дані у рядку
+розділені одним пропуском. Оцінки набувають значення від 1 до 5.
+Вихідні дані
+Виведіть три дійсні числа: середній бал усіх учнів з математики, фізики, інформатики.
+import java.util.Scanner;
+public class Coordinates {
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	Student student1 = new Student();
+    	student1.surname="Markov";
+    	student1.name="Pasha";
+    	student1.Mathematics=4;
+    	student1.Physics=5;
+    	student1.Informatics=2;
+        System.out.println(student1.surname + " " + student1.name + " "+ student1.Mathematics + " " + student1.Physics + " " + student1.Informatics);
+        
+        Student student2 = new Student();
+    	student2.surname="Kozlov";
+    	student2.name="Sasha";
+    	student2.Mathematics=5;
+    	student2.Physics=1;
+    	student2.Informatics=2;
+        System.out.println(student2.surname+ " " + student2.name + " " + student2.Mathematics + " " + student2.Physics + " " + student2.Informatics);
+        
+        float GPA_Mathematics;
+        float GPA_Physics;
+        float GPA_Informatics;
+        GPA_Mathematics=(student1.Mathematics+student2.Mathematics)/2;
+        GPA_Physics=(student1.Physics+student2.Physics)/2;
+        GPA_Informatics=(student1.Informatics+student2.Informatics)/2;
+        System.out.println(GPA_Mathematics + " " + GPA_Physics + " " + GPA_Informatics);
+        }}
+    class  Student{
+    String name;
+    String surname;
+    float Mathematics;
+    float Physics;
+    float Informatics;
+    }
+
+Завдання 8. Найкращі учні
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Визначте учнів із найкращою успішністю, тобто з максимальним середнім балом з трьох
+предметів. Виведіть всіх учнів, які мають максимальний середній бал.
+Вхідні дані
+Задано спочатку кількість учнів n, потім n рядків, кожна з яких містить прізвище, ім'я та
+три числа (оцінки з трьох предметів: математики, фізики, інформатики). Дані у рядку
+розділені одним пропуском. Оцінки набувають значення від 1 до 5.
+Вихідні дані
+Необхідно вивести пари прізвище-ім'я по одному на рядку, розділяючи прізвище та ім'я
+одним пропуском. Виводити оцінки не потрібно. Порядок виведення має бути таким
+самим, як у вихідних даних.
+public class Coordinates {
+	public static void main(String[] args) {
+	Student student1 = new Student();
+	int n=2;
+    	student1.surname="Markov";
+    	student1.name="Pasha";
+    	student1.Mathematics=1;
+    	student1.Physics=1;
+    	student1.Informatics=1;
+        System.out.println(student1.surname + " " + student1.name + " "+ student1.Mathematics + " " + student1.Physics + " " + student1.Informatics);
+        
+        Student student2 = new Student();
+    	student2.surname="Kozlov";
+    	student2.name="Sasha";
+    	student2.Mathematics=5;
+    	student2.Physics=5;
+    	student2.Informatics=5;
+        System.out.println(student2.surname+ " " + student2.name + " " + student2.Mathematics + " " + student2.Physics + " " + student2.Informatics);
+        
+        float GPA_1Student;
+        float GPA_2Student;
+        GPA_1Student=(student1.Mathematics+student1.Physics+student1.Informatics)/3;
+        GPA_2Student=(student2.Mathematics+student2.Physics+student2.Informatics)/3;
+        if(GPA_1Student>GPA_2Student) {
+        System.out.println(student1.surname + " " + student1.name);
+        }
+        else{System.out.println(student2.surname + " " + student2.name);
+        	}}
+        }
+    class  Student{
+    String name;
+    String surname;
+    float Mathematics;
+    float Physics;
+    float Informatics;
+    }
+
+Завдання 9. Відсортувати у середньому
+Введення та виведення даних виробляються через стандартні потоки введення-виводу.
+Виведіть прізвища та імена учнів у порядку зменшення їхнього середнього балу.
+Вхідні дані
+Задано спочатку кількість учнів n, потім n рядків, кожна з яких містить прізвище, ім'я та
+три числа (оцінки з трьох предметів: математики, фізики, інформатики). Дані у рядку
+розділені одним пробілом. Оцінки набувають значення від 1 до 5.
+Загальна кількість учнів вбирається у 100001.
+Вихідні дані
+Необхідно вивести пари прізвище-ім'я по одному на рядку, розділяючи прізвище та ім'я
+одним пропуском. Виводити оцінки не потрібно. Якщо кілька учнів мають однакові
+середні бали, їх потрібно виводити гаразд, заданому у вхідних даних.
+public class Coordinates {
+	public static void main(String[] args) {
+	Student student1 = new Student();
+	int n=2;
+    	student1.surname="Markov";
+    	student1.name="Pasha";
+    	student1.Mathematics=5;
+    	student1.Physics=5;
+    	student1.Informatics=5;
+        System.out.println(student1.surname + " " + student1.name + " "+ student1.Mathematics + " " + student1.Physics + " " + student1.Informatics);
+        
+        Student student2 = new Student();
+    	student2.surname="Kozlov";
+    	student2.name="Sasha";
+    	student2.Mathematics=1;
+    	student2.Physics=2;
+    	student2.Informatics=3;
+        System.out.println(student2.surname+ " " + student2.name + " " + student2.Mathematics + " " + student2.Physics + " " + student2.Informatics);
+        
+        float GPA_1Student;
+        float GPA_2Student;
+        GPA_1Student=(student1.Mathematics+student1.Physics+student1.Informatics)/3;
+        GPA_2Student=(student2.Mathematics+student2.Physics+student2.Informatics)/3;
+        if(GPA_1Student>GPA_2Student) {
+        System.out.println(student1.surname + " " + student1.name);
+        System.out.println(student2.surname + " " + student2.name);
+        }
+        else{System.out.println(student2.surname + " " + student2.name);
+        System.out.println(student1.surname + " " + student1.name);
+        	}}
+        }
+    class  Student{
+    String name;
+    String surname;
+    float Mathematics;
+    float Physics;
+    float Informatics;
+    }
+
+Типи даних: Множини
+
+Завдання 1. Різні
+Завдання на множини
+Дано N чисел, потрібно з'ясувати, скільки з них різних.
+import java.util.Arrays;
+public class Name {
+	public static void main(String[] args) {
+		int[] array = {1, 0, 1, 2, 0};
+        System.out.println(Arrays.toString(array));
+        int count = countNumberWithoutDuplicate(array);
+        System.out.println("Чисел: " + count);
+    }
+    static int countNumberWithoutDuplicate(int[] array) {
+        int numbers = 0;
+        for (int i = 0; i < array.length; i++) {
+            int count = 0;
+            for (int j = 0; j < i; j++) {
+                if (array[j] == array[i]) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                numbers++;
+            }
+        }
+        return numbers;
+
+Завдання 2. Структура set
+Завдання на множини
+Напишіть програму, яка виконуватиме послідовність запитів виду ADD num, PRESENT
+num та COUNT (без параметра). Програму обов'язково слід писати за допомогою
+шаблонного типу set.
+Виконання кожного запиту виду ADD num має додавати елемент num у безліч (якщо
+такий елемент вже є, додавання ще однієї копії не змінює безліч), на екран нічого не
+виводиться.
+При виконанні кожного запиту виду PRESENT num має видаватися повідомлення "YES"
+або "NO" (великими літерами, в окремому рядку), відповідно до того, чи є такий елемент у
+множині; значення множини при цьому не змінюється.
+При виконанні кожного запиту виду COUNT має видаватися на екран в окремому рядку
+кількість різних елементів у множині; значення множини при цьому не змінюється.
+Вхідні дані
+У першому рядку стандартного вхідного потоку задано кількість запитів N
+(1 < N < 100000), далі йдуть N рядків, кожен з яких містить по одному запиту згідно з
+описаним форматом.
+Значення чисел не перевищують за модулем 100000000.
+Вихідні дані
+Виводьте на стандартний вихід (екран) в окремих рядках результати запитів PRESENT та
+COUNT; на запити ADD нічого не треба виводити.
+import java.util.HashSet;
+public interface OnClick {
+	public static void main(String args[]) {
+		HashSet<String> ADDSet = new HashSet<>();
+		HashSet<String> PRESENTSet = new HashSet<>();
+		HashSet<String> COUNTSet = new HashSet<>();
+		int N=7;
+		if(1 < N && N < 100000)
+		ADDSet.add("5");
+		ADDSet.add("7");
+		COUNTSet.add(null);
+		PRESENTSet.add("3");
+		PRESENTSet.add("5");
+		ADDSet.add("3");
+		COUNTSet.add(null);
+		
+		System.out.println(PRESENTSet.size());//кількість елементів PRESENT у множині
+		
+		if(PRESENTSet.contains("3")) {//чи є елемент в множині?
+			System.out.println("YES");
+		}
+		else {System.out.println("No");}
+		
+		if(PRESENTSet.contains("5")) {
+			System.out.println("YES");
+		}
+		else {System.out.println("No");}
+		
+		System.out.println(ADDSet.size());//кількість елементів ADD у множині
+}
+}
+
+Завдання 3. Кількість збігаються
+Завдання на множини
+Дано два списки чисел, які можуть містити до 100000 чисел кожен. Порахуйте, скільки
+чисел міститься одночасно як у першому списку, так і у другому.
+Примітка. Це завдання на Пітоні можна вирішити в один рядок.
+Вхідні дані
+Вводяться два списки чисел. Усі числа кожного списку знаходяться на окремому рядку.
+Вихідні дані
+Виведіть відповідь на завдання.
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Coordinates {
+	public static void main(String[] args) {
+        int count = 0;
+		int [] array1 = {1,3,2,};
+	    int [] array2 = {4,3,2,};
+	    Arrays.sort(array1);
+	    Arrays.sort(array2);
+	    ArrayList<Object> result = new ArrayList<>();
+	    int i =0 ;
+	    int j =0;
+	    while(i< array1.length && j<array2.length){
+	    if (array1[i]>array2[j]){
+	        j++;
+
+	    }else if (array1[i]<array2[j]){
+	        i++;
+
+	    }else {
+	        result.add(array1[i]);
+	        i++;
+	        j++;
+	        count++;
+	    }
+	    }
+	    System.out.println(count);
+
+Завдання 4. Перетин множин
+Завдання на множини
+Дано два списки чисел, які можуть містити до 10000 чисел кожен. Виведіть усі числа, які
+входять як до першого, так і до другого списку в порядку зростання.
+Примітка. І навіть це завдання на Пітоні можна вирішити в один рядок.
+Вхідні дані
+Вводяться два списки цілих чисел. Усі числа кожного списку знаходяться на окремому
+рядку.
+Вихідні дані
+Виведіть відповідь на завдання.
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Coordinates {
+	public static void main(String[] args) {
+		int [] array1 = {1,3,2,5,};
+	    int [] array2 = {4,3,2,5,};
+	    Arrays.sort(array1);
+	    Arrays.sort(array2);
+	    ArrayList<Object> result = new ArrayList<>();
+	    int i =0 ;
+	    int j =0;
+	    while(i< array1.length && j<array2.length){
+	    if (array1[i]>array2[j]){
+	        j++;
+
+	    }else if (array1[i]<array2[j]){
+	        i++;
+
+	    }else {
+	        result.add(array1[i]);
+	        i++;
+	        j++;
+	    }
+	    }
+	    System.out.println(result);
+
+Завдання 5. a + b = c
+У всіх завданнях введення-виведення – стандартне.
+Дано три дійсні числа: a, b, c. Перевірте, чи дорівнює a + b = c . Якщо рівність
+виконується, виведіть YES, якщо не виконується, виведіть NO.
+Вхідні дані
+Числа a, b, c – дійсні, позитивні, не перевищують 10 і задані трохи більше, ніж із 7
+знаками після точки.
+Вихідні дані
+Виведіть результат порівняння.
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+public class Name {
+	
+	public static void main(String[] args) throws NumberFormatException, IOException{
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int a = Integer.parseInt(reader.readLine());
+        int b = Integer.parseInt(reader.readLine());
+        int c = Integer.parseInt(reader.readLine());
+        int k=a+b;
+        if(k==c) {
+			System.out.println("YES");
+        }else {
+			System.out.println("NO");  
+        }	
+
+Завдання 6. Дієта
+У всіх завданнях введення-виведення – стандартне.
+У деякій надсекретній лабораторії вивчаються фізичні можливості тварин. Будь-який
+живий організм потребує трьох компонентів їжі – білків, жирів та вуглеводів. Відомий
+набір продуктів, що є у розпорядженні лабораторії, та меню тварин – скільки одиниць
+кожного продукту вони отримують. Відомо також, скільки білків, жирів та вуглеводів
+необхідно для нормальної життєдіяльності тварини. Необхідно визначити, чи тварина
+отримує достатню кількість поживних речовин. Відомо, що тварині потрібно на добу X
+білків, Y жирів та Z вуглеводів.
+Відомо також, що всі тварини отримують на добу N продуктів харчування, і для кожного з
+них відомі Ai, Bi, Ci і Qi – відповідно, енергетична цінність одиниці продукту в білках,
+жирах і вуглеводах і кількість одиниць цього продукту. Усі числа – дійсні, задані з
+точністю до 5 знаків після коми.
+Вхідні дані
+На першому рядку вхідних даних записані числа X, Y та Z. На другому рядку записано
+число N. Далі на N рядках записано, відповідно, Ai, Bi, Ci та Qi.
+Вихідні дані
+Виведіть YES , якщо цей харчовий раціон є достатнім за всіма параметрами, і NO інакше.
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+public class Name {
+	
+	public static void main(String[] args) throws NumberFormatException, IOException{
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        double X; double Y; double Z; double A; double B; double C; double Q;
+        int N = 1;
+        for(int i=0; i<=N; i++) {
+        	X = Double.parseDouble(reader.readLine());//білки
+            Y = Double.parseDouble(reader.readLine());//жири
+            Z = Double.parseDouble(reader.readLine());//вуглеводи
+            A = Double.parseDouble(reader.readLine());
+            B = Double.parseDouble(reader.readLine());
+            C = Double.parseDouble(reader.readLine());
+            Q = Double.parseDouble(reader.readLine());
+            System.out.println(X + " " +  Y + " "+ Z);
+            System.out.println(N);
+            System.out.println(A+ " " + B + " " + C + " " + Q);
+        	X=X-A*Q;
+            Y=Y-B*Q;
+            Z=Z-C*Q;     
+        if (X<=0 && Y<=0 && Z<=0) 
+			System.out.println("YES");
+         else 
+			System.out.println("NO");  
+        i++;
+        }	
+
